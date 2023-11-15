@@ -27,7 +27,7 @@ To build, run from top-level:
 
 To run tests:
 
-`cd build && ctest`
+`cd build && ctest && cd ..`
 
 # Running tests
 

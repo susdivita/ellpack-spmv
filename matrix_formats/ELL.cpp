@@ -23,11 +23,11 @@ public:
 private:
     void buildELLrix(const std::vector<Triplet> &triplets, index_t m, index_t n);
 
-    std::vector<double> val;  // Vector containing values
-    std::vector<index_t> column;  // Vector containing column
-    index_t maxcols;           // Number of non-empty columns
-    index_t m, n;              // Number of rows, number of columns
-    std::vector<double> x;                  // Vector x
+    std::vector<double> val;  // vector containing values
+    std::vector<index_t> column;  // vector containing column
+    index_t maxcols;           // n of non-empty columns
+    index_t m, n;              // n of rows, n of columns
+    std::vector<double> x;                  // read vector x
     std::vector<double> res;
     std::vector<Triplet> triplets;  // entries
     int row, col;
