@@ -331,19 +331,57 @@ TEST_F(AllTest, TestMatrixFormatDDDNaiveRandom) {
         matrix.PerformMultiplicationDouble();
     CompareWithBase(files, expected_result);
 }
-////////////////elllpack
 
-TEST_F(AllTest, TestMatrixFormatELL) {
+// ---------------------- ELLpack -------------------------
+
+TEST_F(AllTest, TestMatrixFormatELLBasic) {
     // Create matrix files
     AbstractMatrixFormat::MatrixFiles files = {
         "/workspaces/ellpack-spmv/inputs/test_basic_mat_in.txt",
         "/workspaces/ellpack-spmv/inputs/test_basic_vec_in.txt"};
-    std::string matrixFile = "/workspaces/ellpack-spmv/inputs/test_basic_mat_in.txt";
-    std::string vectorFile = "/workspaces/ellpack-spmv/inputs/test_basic_vec_in.txt";
-
+   
     // Create your matrix format here.
-    ELL ellMatrix(matrixFile, vectorFile);
-    std::vector<double> expected_result = ellMatrix.PerformMultiplicationDouble();
+    ELL matrix(files);
+    std::vector<double> expected_result = matrix.PerformMultiplicationDouble();
+    CompareWithBase(files, expected_result);
+}
+
+TEST_F(AllTest, TestMatrixFormatELLOnes) {
+    // Create base implementation from matrix files.
+    AbstractMatrixFormat::MatrixFiles files = {
+        "../inputs/Materials Problem/arc130.mtx",
+        "../inputs/Materials Problem/test_vec_130_ones_in.txt"};;
+    // Create your matrix format here.
+    ELL matrix(files);
+    // Compute matrix format
+    std::vector<double> expected_result =
+        matrix.PerformMultiplicationDouble();
+    CompareWithBase(files, expected_result);
+}
+
+TEST_F(AllTest, TestMatrixFormatELLZeros) {
+    // Create base implementation from matrix files.
+    AbstractMatrixFormat::MatrixFiles files = {
+        "../inputs/Materials Problem/arc130.mtx",
+        "../inputs/Materials Problem/test_vec_130_zeros_in.txt"};;
+    // Create your matrix format here.
+    ELL matrix(files);
+    // Compute matrix format
+    std::vector<double> expected_result =
+        matrix.PerformMultiplicationDouble();
+    CompareWithBase(files, expected_result);
+}
+
+TEST_F(AllTest, TestMatrixFormatELLRandom) {
+    // Create base implementation from matrix files.
+    AbstractMatrixFormat::MatrixFiles files = {
+        "../inputs/Materials Problem/arc130.mtx",
+        "../inputs/Materials Problem/test_vec_130_random_in.txt"};
+    // Create your matrix format here.
+    ELL matrix(files);
+    // Compute matrix format
+    std::vector<double> expected_result =
+        matrix.PerformMultiplicationDouble();
     CompareWithBase(files, expected_result);
 }
 
